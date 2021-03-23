@@ -99,7 +99,7 @@ Resources:
       - IpProtocol: tcp
         FromPort: 80
         ToPort: 80
-        SourceSecurityGroupId: !Ref ELBSecurityGroup
+        CidrIp: 0.0.0.0/0
       
       - IpProtocol: tcp
         FromPort: 22
@@ -109,7 +109,7 @@ Resources:
       - IpProtocol: tcp
         FromPort: 3000
         ToPort: 3000
-        SourceSecurityGroupId: !Ref ELBSecurityGroup
+        CidrIp: 0.0.0.0/0
 
       SecurityGroupEgress:
       - IpProtocol: -1
@@ -131,3 +131,6 @@ Resources:
           - !Ref InstanceSecurityGroup
         SubnetId: 
           !Ref publicsubnet1
+      Tags:
+      - Key: "Name"
+        Value: "jenkins_cfn_ec2"
